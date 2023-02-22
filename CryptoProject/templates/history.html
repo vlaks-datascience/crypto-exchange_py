@@ -1,0 +1,385 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style>
+    th:hover {
+        cursor: pointer;
+    }
+    #myInput {
+        width: 50%;
+        height: 100%;
+        border: 1px solid #ddd; /* Add a grey border */
+        margin-bottom: 12px; /* Add some space below the input */
+        font-size: 16px; /* Increase font-size */
+    }
+    #myInput2 {
+        width: 50%;
+        height: 100%;
+        border: 1px solid #ddd; /* Add a grey border */
+        margin-bottom: 12px; /* Add some space below the input */
+        font-size: 16px; /* Increase font-size */
+    }
+    table {
+        margin-bottom: 50px;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("myTable");
+  switching = true;
+  // Set the sorting direction to ascending:
+  dir = "asc";
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /* Loop through all table rows (except the
+    first, which contains table headers): */
+    for (i = 1; i < (rows.length - 1); i++) {
+      // Start by saying there should be no switching:
+      shouldSwitch = false;
+      /* Get the two elements you want to compare,
+      one from current row and one from the next: */
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /* Check if the two rows should switch place,
+      based on the direction, asc or desc: */
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          // If so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          // If so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark that a switch has been done: */
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      // Each time a switch is done, increase this count by 1:
+      switchcount ++;
+    } else {
+      /* If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again. */
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+function sortTable2(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("myTable2");
+  switching = true;
+  // Set the sorting direction to ascending:
+  dir = "asc";
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /* Loop through all table rows (except the
+    first, which contains table headers): */
+    for (i = 1; i < (rows.length - 1); i++) {
+      // Start by saying there should be no switching:
+      shouldSwitch = false;
+      /* Get the two elements you want to compare,
+      one from current row and one from the next: */
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /* Check if the two rows should switch place,
+      based on the direction, asc or desc: */
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          // If so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          // If so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark that a switch has been done: */
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      // Each time a switch is done, increase this count by 1:
+      switchcount ++;
+    } else {
+      /* If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again. */
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+
+function myFunction() {
+  // Declare variables
+  console.log("udje u fju");
+  var input, filter, table, tr, td, i, txtValue, brisi1, brisi2, brisi3, brisi4;
+  input = document.getElementById("myInput");
+  filter = input.value;
+  console.log(filter);
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 1; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      console.log(txtValue);
+      console.log(txtValue.indexOf(filter));
+      if (txtValue.indexOf(filter) > -1) {
+        brisi1 = true;
+
+      } else {
+          brisi1 = false;
+
+      }
+    }
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.indexOf(filter) > -1) {
+      brisi2 = true;
+
+      } else {
+       brisi2 = false;
+
+
+      }
+    }
+
+    td = tr[i].getElementsByTagName("td")[2];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.indexOf(filter) > -1) {
+        brisi3 = true;
+
+      } else {
+       brisi3 = false;
+
+
+      }
+    }
+
+    td = tr[i].getElementsByTagName("td")[3];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.indexOf(filter) > -1) {
+        brisi4 = true;
+
+      } else {
+       brisi4 = false;
+
+
+      }
+    }
+
+    if(brisi1 || brisi2 || brisi3 || brisi4){
+        console.log("ne brise");
+        tr[i].style.display = "";
+    }
+    else{
+        tr[i].style.display = "none";
+    }
+
+  }
+}
+
+
+
+function myFunction2() {
+  // Declare variables
+  console.log("udje u fju2");
+  var input, filter, table, tr, td, i, txtValue, brisi1, brisi2, brisi3, brisi4;
+  input = document.getElementById("myInput2");
+  filter = input.value;
+  console.log(filter);
+  table = document.getElementById("myTable2");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 1; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      console.log(txtValue);
+      console.log(txtValue.indexOf(filter));
+      if (txtValue.indexOf(filter) > -1) {
+        brisi1 = true;
+
+      } else {
+          brisi1 = false;
+
+      }
+    }
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.indexOf(filter) > -1) {
+      brisi2 = true;
+
+      } else {
+       brisi2 = false;
+
+
+      }
+    }
+
+    td = tr[i].getElementsByTagName("td")[2];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.indexOf(filter) > -1) {
+        brisi3 = true;
+
+      } else {
+       brisi3 = false;
+
+
+      }
+    }
+
+    td = tr[i].getElementsByTagName("td")[3];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.indexOf(filter) > -1) {
+        brisi4 = true;
+
+      } else {
+       brisi4 = false;
+
+
+      }
+    }
+
+    if(brisi1 || brisi2 || brisi3 || brisi4){
+        console.log("ne brise");
+        tr[i].style.display = "";
+    }
+    else{
+        tr[i].style.display = "none";
+    }
+
+  }
+}
+
+</script>
+<div class="content-section">
+    <div class="media">
+        <div class="media-body">
+            <h2 class="account-heading">{{ current_user.username }}</h2>
+            <p class="text-secondary">{{ current_user.email }}</p>
+        </div>
+    </div>
+    <fieldset>
+        <legend class="border-bottom mb-4">Your transaction history</legend>
+        {%if not historySend%}
+        <div></div>
+        {%else%}
+        <div class="container">
+            <h3>Transactions you initiated</h3>
+           <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search...">
+            <table id="myTable" class="table table-hover">
+
+                <tr>
+                    <th onclick="sortTable(0)" scope="col">SENDER</th>
+                    <th onclick="sortTable(1)" scope="col">RECEIVER</th>
+                    <th onclick="sortTable(2)" scope="col">AMOUNT</th>
+                    <th onclick="sortTable(3)" scope="col">STATUS</th>
+                </tr>
+
+                {% for h in historySend%}
+                <tr>
+                    <td>
+                        {{ h.sender_id }}
+                    </td>
+                    <td>
+                        {{ h.receiver_id }}
+                    </td>
+                    <td>
+                        {{ h.amount }}
+                        {% if h.currency == 'money' %}
+                        $
+                        {% else %}
+                        {{ h.currency }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{ h.status }}
+                    </td>
+                </tr>
+                {% endfor %}
+
+
+            </table>
+
+            {% endif %}
+            {% if not historyRecv %}
+            <div></div>
+            {% else %}
+
+            <h3>Transactions you received</h3>
+            <input type="text" id="myInput2" onkeyup="myFunction2()" placeholder="Search...">
+            <table id="myTable2" class="table table-hover">
+                <tr>
+                    <th onclick="sortTable2(0)" scope="col">SENDER</th>
+                    <th onclick="sortTable2(1)" scope="col">RECEIVER</th>
+                    <th onclick="sortTable2(2)" scope="col">AMOUNT</th>
+                    <th onclick="sortTable2(3)" scope="col">STATUS</th>
+                </tr>
+                {% for h in historyRecv%}
+                <tr>
+                    <td>
+                        {{ h.sender_id }}
+                    </td>
+                    <td>
+                        {{ h.receiver_id }}
+                    </td>
+                    <td>
+                        {{ h.amount }}
+                        {% if h.currency == 'money' %}
+                        $
+                        {% else %}
+                        {{ h.currency }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{ h.status }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+        </div>
+    </fieldset>
+</div>
+
+<div class="border-top pt-3">
+    <small class="text-muted">
+        Crypto Exchange 2023®
+    </small>
+</div>
+{% endblock content %}

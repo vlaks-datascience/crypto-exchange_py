@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+      <div class="media">
+        <div class="media-body">
+          <h2 class="account-heading">{{ current_user.username }}</h2>
+          <p class="text-secondary">{{ current_user.email }}</p>
+        </div>
+      </div>
+            <fieldset>
+                <legend class="border-bottom mb-4"><h1>Your Balance</h1></legend>
+                <div>
+                    <h3>Dollars: {{ current_money }} $</h3>
+                    <p></p>
+                    <h3>Bitcoin: {{ current_bitcoin }} BTC</h3>
+                    <p></p>
+                    <h3>Dogecoin: {{ current_dogecoin }} DOGE</h3>
+                    <p></p>
+                    <h3>Litecoin: {{ current_litecoin }} LTC</h3>
+                    <p></p>
+                    <h3>Ripple: {{ current_ripple }} RIPPLE</h3>
+                    <p></p>
+                    <h3>Ethereum: {{ current_ethereum }} ETH</h3>
+                </div>
+            </fieldset>
+    </div>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Crypto Exchange 2023®
+        </small>
+    </div>
+{% endblock content %}

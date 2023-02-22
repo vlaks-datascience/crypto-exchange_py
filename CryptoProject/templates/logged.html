@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+      <div class="media">
+        <div class="media-body">
+          <h2 class="account-heading">{{ current_user.username }}</h2>
+          <p class="text-secondary">{{ current_user.email }}</p>
+        </div>
+      </div>
+            <fieldset>
+                <legend class="border-bottom mb-4">Your Account</legend>
+                <div>
+                    <label>Name: {{ current_user.name }}</label>
+                </div>
+                <div>
+                    <label>Surname: {{ current_user.surname }}</label>
+                </div>
+                <div>
+                    <label>Address: {{ current_user.address }}</label>
+                </div>
+                <div>
+                    <label>City: {{ current_user.city }}</label>
+                </div>
+                <div>
+                    <label>Country: {{ current_user.state }}</label>
+                </div>
+                <div>
+                    <label>Cellphone: {{ current_user.cellphone }}</label>
+                </div>
+            </fieldset>
+    </div>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Crypto Exchange 2023®
+        </small>
+    </div>
+{% endblock content %}
